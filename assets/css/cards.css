@@ -78,7 +78,7 @@
 	background-color: black;
 	background-image: url("/assets/image/umbrella-mobile-logo.webp");
 	background-repeat: no-repeat;
-	background-size: 50%;
+	background-size: 40%;
 	background-position: center 30%;
 	display: flex;
 	align-items: center;
@@ -204,6 +204,7 @@ input[type="radio"]:checked + .custom-rad::after {
 		width: clamp(240px, 60vw, 290px);
 	}
 	.back{
+		background-size: 50%;
 		background-image: url(/assets/image/umbrella-svg-logo.svg");
 	}
 	.back span {
