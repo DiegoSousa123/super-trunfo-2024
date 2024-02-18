@@ -7,7 +7,7 @@
 		<meta name="description" content="Enjoy the Super Trumps with Resident Evil characters" />
 		<link rel="stylesheet" href="./assets/css/reset.min.css" />
 		<link rel="preload" as="image" href="./assets/image/umbrella-svg-logo.svg"/>
-		<link rel="preload" as="image" href="./assets/image/sp-re-logo.png"/>
+		<link rel="preload" as="image" href="./assets/image/sp-re-logo.webp"/>
 		<link
 			rel="preload"
 			as="style"
@@ -54,7 +54,7 @@
 					<div class="card card--computer" id="machine">
 						<div class="front">
 							<div>
-								<img class="card__image" id="img-computer" src="" loading="lazy" />
+								<img class="card__image" id="img-computer" src="" loading="lazy" alt="" />
 								<span class="card__name" id="computer-card-name">Name</span>
 								<ul class="card__attr__list">
 									<li>
@@ -83,7 +83,7 @@
 					<div class="card card--user" id="user">
 						<div class="front">
 							<div>
-								<img class="card__image" id="img-user" src="" loading="lazy" />
+								<img class="card__image" id="img-user" src="" loading="lazy" alt=""/>
 								<span class="card__name" id="user-card-name">Name</span>
 								<ul class="card__attr__list">
 									<li>
@@ -147,7 +147,13 @@
 		</main>
 		<footer>
 			<div>
-				<img class="footer__logo" src="./assets/image/sp-re-logo.webp" width="842" height="598" alt="Super Trumps Resident Evil logo">
+				<img class="footer__logo" 
+				src="./assets/image/sp-re-logo-240.webp" 
+				srcset="./assets/image/sp-re-logo-320.webp 320w,
+				./assets/image/sp-re-logo-480.webp 480w,
+				./assets/image/sp-re-logo-640.webp 640w"
+				sizes="((min-width: 320px) and (max-width: 395px)) 240px, ((min-width: 480px) and (max-width: 600px))320px, ((min-width: 768px) and (max-width: 1280px))480px, (min-width: 1024px) 640w"
+				alt="Super Trumps Resident Evil logo">
 			</div>
 			<div class="dev">
 				<p>created by <a href="#">diêgo sousa</a></p>
