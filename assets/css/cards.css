@@ -1,0 +1,218 @@
+@keyframes elevateCard {
+	50% {
+		transform: scale(1.2, 1.2);
+	}
+}
+@keyframes legendary {
+	0% {
+		box-shadow: 0 0 0 3px transparent;
+	}
+	50% {
+		box-shadow:
+			0 0 0 2px gold,
+			0 5px 20px -2px gold;
+	}
+}
+@keyframes indicateAction {
+	from {
+		filter: brightness(100%);
+		border-bottom: 2px solid transparent;
+	}
+	to {
+		filter: brightness(150%);
+		border-bottom: 2px solid var(--clr-accent);
+	}
+}
+.card__view {
+	aspect-ratio: var(--aspect);
+	width: 240px;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+.card {
+	aspect-ratio: var(--aspect);
+	width: 90%;
+	margin: auto;
+	border-radius: var(--border-rd);
+	position: relative;
+	transition: transform var(--rotate-time);
+	transform-origin: center;
+	transform-style: preserve-3d;
+	color: var(--clr-text);
+}
+.card div {border-radius: inherit;}
+.front,.back {
+	backface-visibility: hidden;
+	transform: rotateX(0deg); /* fix for a sinister Moz bug*/
+	position: absolute;
+	inset: 0;
+}
+.front {
+	transform: rotateY(180deg);
+	background-color: #181818;
+}
+.front > div {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+.card__name {
+	width: 100%;
+	text-align: center;
+	padding-top: .5rem;
+	background-color: rgba(10, 10, 10, 0.8);
+}
+.card__image {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+	z-index: -1;
+}
+.back {
+	background-color: black;
+	background-image: url("/assets/image/umbrella-svg-logo.svg");
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-position: center 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	filter: brightness(85%);
+}
+.back span{
+	font-weight: 400;
+	margin-top: 5rem;
+	font-size: 1.3rem;
+} 
+.rotate {
+	transition: transform var(--rotate-time);
+	transform: rotateY(180deg);
+	transform-style: preserve-3d;
+}
+.elevate {
+	animation: elevateCard var(--elevate-time) ease;
+}
+.legendary-card {
+	animation: legendary 3s linear infinite;
+}
+.card__attr__list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column nowrap;
+	gap: 0.4rem;
+	padding: .5rem 1rem 1rem 1rem;
+	width: 100%;
+	background-color: var(--clr-attr-list);
+	z-index: 0;
+}
+.card__attr__list li {width: 100%;}
+.card__attr__list label {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0.2rem;
+	box-sizing: border-box;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+.attr-computer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0.2rem;
+	position: relative;
+}
+/* hide computer attribute that is 
+not the same selected by user*/
+.attr-computer:not([data-choose="yes"])::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: 50%;
+	margin: 0 0 0 auto;
+	border-radius: 5px;
+	background-color: var(--clr-main);
+}
+input[type="radio"] {
+	margin: 0;
+	opacity: 0;
+	line-height: 2rem;
+	position: absolute;
+	left: 0;
+}
+.custom-rad {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+/* indicates to user that have interaction on attributes */
+.rotate .card__attr__list label .custom-rad {
+	animation: indicateAction 300ms 1s linear 3;
+}
+.custom-rad::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 5px;
+	width: 1px;
+	margin: 0 0 0 auto;
+	transition: all 300ms;
+}
+input[type="radio"]:checked + .custom-rad::after {
+	margin: 0 auto 0 0;
+	transition: all 200ms;
+	width: 100%;
+	background-color: #e93d50;
+}
+@media (max-width: 375px) {
+	.back span {
+		font-size: 0.9rem;
+	}
+	.card__view {
+		width: clamp(40px, 45vw, 200px);
+	}
+	.card__name {
+		font-size: 0.8rem;
+	}
+	.card__attr__list {
+		gap: 0.3rem;
+	}
+	.card__attr__list label,
+	.card__attr__list span.attr-computer {
+		padding: 0;
+		font-size: 0.8rem;
+	}
+}
+@media (min-width: 375px) and (max-width: 620px) {
+	.card__view {
+		width: clamp(70px, 50vw, 260px);
+	}
+}
+@media (min-width: 620px) {
+	.card__view {
+		width: clamp(240px, 60vw, 290px);
+	}
+	.back span {
+		margin-top: 10rem;
+		font-size: clamp(1.3rem, 4vw, 1.5rem);
+	}
+	.card__attr__list{
+		font-size: clamp(1rem, 4vw, 1.5rem);
+	}
+}
+@media (min-width: 1024px) and (max-height: 768px){
+	.card__view {
+			width: 40vh;
+	}
+}

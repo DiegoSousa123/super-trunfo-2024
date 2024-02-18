@@ -1,0 +1,15 @@
+:root{
+	--rotate-time: 600ms;
+	--elevate-time: 630ms;
+	--border-rd: calc(1vw / .5);
+	--aspect: 1.1 / 1.6;
+	/* COLORS */
+	--clr-main: #282A3B;
+	--clr-secondary: #31344A;
+	--clr-accent: #EE2744;
+	--clr-text: #F6F6F6;
+	--clr-win: #000;
+	--clr-lose: #000;
+	--clr-tie: #000;
+	--clr-attr-list: rgba(10, 10, 10, 0.8);
+}
