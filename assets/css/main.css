@@ -39,15 +39,14 @@ body {
 	font-size: 2.5rem;
 	font-weight: 700;
 	text-align: right;
-	font-family: "LED Digital 7", "Helvetica", sans-serif;
 }
 .points__title {
-	font-family: "LED Digital 7", "Helvetica", sans-serif;
 	font-size: 1.5rem;
 	color: var(--clr-accent);
 	text-align: center;
 }
 .points__numbers span:not(.points) {
+	display: none;
 	color: #5656569f;
 }
 .points {
