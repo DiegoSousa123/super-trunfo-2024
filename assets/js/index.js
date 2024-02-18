@@ -65,11 +65,11 @@ shuffleBtn.onclick = () => {
 	computer = getCard(computerDeck);
 	listAttrs(user, computer);
 	resetDataChooseAttribute();
+	disableElement(shuffleBtn);
 	
 	setTimeout(function () {
 		rotateCard(cardUser, viewUser, 180);
 		isLegendary(user, cardUser);
-		disableElement(shuffleBtn);
 		enableElement(playBtn);
 	}, 500);
 };
