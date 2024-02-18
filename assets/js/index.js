@@ -65,13 +65,13 @@ shuffleBtn.onclick = () => {
 	computer = getCard(computerDeck);
 	listAttrs(user, computer);
 	resetDataChooseAttribute();
-	rotateCard(cardUser, viewUser, 180);
 	
-	isLegendary(user, cardUser);
 	setTimeout(function () {
+		rotateCard(cardUser, viewUser, 180);
+		isLegendary(user, cardUser);
 		disableElement(shuffleBtn);
 		enableElement(playBtn);
-	}, 200);
+	}, 500);
 };
 //Try again button, restart the game.
 dialogRestartButton.onclick = () => {
