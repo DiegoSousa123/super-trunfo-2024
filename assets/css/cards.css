@@ -76,7 +76,7 @@
 }
 .back {
 	background-color: black;
-	background-image: url("/assets/image/umbrella-svg-logo.svg");
+	background-image: url("/assets/image/umbrella-mobile-logo.webp");
 	background-repeat: no-repeat;
 	background-size: 50%;
 	background-position: center 30%;
@@ -202,6 +202,9 @@ input[type="radio"]:checked + .custom-rad::after {
 @media (min-width: 620px) {
 	.card__view {
 		width: clamp(240px, 60vw, 290px);
+	}
+	.back{
+		background-image: url(/assets/image/umbrella-svg-logo.svg");
 	}
 	.back span {
 		margin-top: 10rem;
