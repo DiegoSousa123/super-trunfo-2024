@@ -260,7 +260,7 @@ footer {
 }
 .footer__logo{
 	margin: 0 auto;
-  width: clamp(200px, 50vw, 250px);
+  width: 8rem;
 	object-fit: cover;
 	aspect-ratio: 4 / 2;
 }
@@ -395,6 +395,9 @@ footer {
 	.deck ul{
 		width: 3rem;
 		flex-flow: row wrap;
+	}
+	.footer__logo{
+		width: 10rem;
 	}
 }
 @media (min-width: 1024px) and (max-height: 768px){
