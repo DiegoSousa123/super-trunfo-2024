@@ -89,6 +89,7 @@
 	font-weight: 400;
 	margin-top: 5rem;
 	font-size: 1.3rem;
+	user-select: none;
 } 
 .rotate {
 	transition: transform var(--rotate-time);

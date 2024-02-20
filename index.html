@@ -21,10 +21,19 @@
 		<link rel="stylesheet" href="./assets/css/vars.min.css" />
 		<link rel="stylesheet" href="./assets/css/cards.min.css" />
 		<link rel="stylesheet" href="./assets/css/main.min.css" />
+	   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js" integrity="sha512-9+ilAOeXY8qy2bw/h51MmliNNHvdyhTpLIlqDmVpD26z8VjVJsUJtk5rhbDIUvYiD+EpGoAu0xTa7MhZohFQjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</head>
 	<body>
 		<main>
 			<div class="cards__wrapper">
+				<!-- INITIAL GUIDE -->
+				<dialog id="guide-dialog">
+					<div>
+						<div id="guide-visualizer"></div>
+						<button id="letsplay">Let's play</button>
+					</div>
+				</dialog>
 				<!-- COMPUTER POINTS -->
 				<div class="computer__points">
 					<p class="points__title"><strong>Pc</strong></p>
@@ -52,7 +61,7 @@
 					<div class="card card--computer" id="machine">
 						<div class="front">
 							<div>
-								<img class="card__image" id="img-computer" src="" loading="lazy" alt="" />
+								<img class="card__image" id="img-computer" src="./assets/image/card-placeholder.svg" loading="lazy" alt="" />
 								<span class="card__name" id="computer-card-name">Name</span>
 								<ul class="card__attr__list">
 									<li>
@@ -81,7 +90,7 @@
 					<div class="card card--user" id="user">
 						<div class="front">
 							<div>
-								<img class="card__image" id="img-user" src="" loading="lazy" alt=""/>
+								<img class="card__image" id="img-user" src="./assets/image/card-placeholder.svg" alt=""/>
 								<span class="card__name" id="user-card-name">Name</span>
 								<ul class="card__attr__list">
 									<li>
@@ -171,6 +180,7 @@
 				</div>
 			</li>
 		</template>
+		<script src="./assets/js/guide.min.js" type="text/javascript"></script>
 		<script src="./assets/js/index.min.js" type="text/javascript" defer></script>
 	</body>
 </html>

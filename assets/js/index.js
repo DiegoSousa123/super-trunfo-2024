@@ -1,3 +1,5 @@
+const DEFAULT_IMAGE = "./assets/image/card-placeholder.svg";
+
 const cardComputer = document.getElementById("machine");
 const cardUser = document.getElementById("user");
 //cards containers
@@ -61,17 +63,20 @@ restartBtn.onclick = () =>{
 //call the getCard function to get a randomly card to user and computer
 //list the attributes on the cards and show the user card.
 shuffleBtn.onclick = () => {
+	let root = document.documentElement, 
+	t = getComputedStyle(root).getPropertyValue('--shuffle-t');
 	user = getCard(userDeck);
 	computer = getCard(computerDeck);
 	listAttrs(user, computer);
 	resetDataChooseAttribute();
 	disableElement(shuffleBtn);
-	
+	shuffleBtn.classList.add("load-shuffle");
 	setTimeout(function () {
 		rotateCard(cardUser, viewUser, 180);
 		isLegendary(user, cardUser);
 		enableElement(playBtn);
-	}, 500);
+		shuffleBtn.classList.remove("load-shuffle");
+	}, parseInt(t));
 };
 //Try again button, restart the game.
 dialogRestartButton.onclick = () => {
@@ -109,8 +114,8 @@ function listCardsRemain() {
 	});
 	showListDecks(deckVisual, listDeckUser, userDeck.length);
 	showListDecks(deckVisual, listDeckComputer, computerDeck.length);
-	cardsRemainsComputer.textContent = computerDeck.length;
-	cardsRemainsUser.textContent = userDeck.length;
+	cardsRemainsComputer.textContent = `${computerDeck.length}`;
+	cardsRemainsUser.textContent = `${userDeck.length}`;
 }
 
 function showListDecks(template, target, deckSize) {
@@ -136,8 +141,8 @@ function turnOffLegendary() {
 function resetPoints() {
 	pointsUser = 0;
 	pointsComputer = 0;
-	displayPointsUser.textContent = pointsUser;
-	displayPointsComputer.textContent = pointsComputer;
+	displayPointsUser.textContent = `${pointsUser}`;
+	displayPointsComputer.textContent = `${pointsComputer}`;
 }
 //hide cards, close the dialog if open
 function resetState() {
@@ -147,6 +152,7 @@ function resetState() {
 	rotateCard(cardComputer, viewComputer, 0);
 	enableElement(shuffleBtn);
 	disableElement(playBtn);
+	imgUser.src = DEFAULT_IMAGE;
 }
 
 function hideButton(e) {
@@ -202,7 +208,7 @@ function showDialog(title) {
 	}
 }
 function closeDialog() {
-	if(dialogRes.open){
+	if(dialogRes instanceof HTMLDialogElement && dialogRes.open){
 		dialogRes.close();
 		dialogResBackdrop.classList.toggle("backdrop--visible");
 	}
@@ -255,8 +261,8 @@ function checkVictory(cardUserObject, cardComputerObject) {
 		pointsComputer++;
 		showDialog("tie");
 	}
-	displayPointsUser.textContent = pointsUser;
-	displayPointsComputer.textContent = pointsComputer;
+	displayPointsUser.textContent = `${pointsUser}`;
+	displayPointsComputer.textContent = `${pointsComputer}`;
 	clearRadios();
 	listCardsRemain();
 	return;

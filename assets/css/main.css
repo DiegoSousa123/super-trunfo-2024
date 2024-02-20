@@ -11,6 +11,57 @@ body {
 	-webkit-text-size-adjust: 100%;
 	font-family: "Inter", sans-serif;
 }
+/*GUIDE DIALOG STYLE*/
+#guide-dialog {
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	border: none;
+	background-color: transparent;
+}
+#guide-dialog > div {
+	height: 100%;
+	background-color: var(--clr-secondary);
+	border-radius: var(--border-rd);
+	display: flex;
+	flex-direction: column;
+}
+#guide-visualizer{
+	padding: 1rem;
+	text-align: center;
+	color: var(--clr-text);
+	flex: 1;
+	overflow: scroll;
+	background-image: linear-gradient(to bottom, transparent, var(--clr-main));
+}
+#guide-visualizer h3{
+	color: var(--clr-accent);
+}
+#guide-visualizer ol{
+	text-align: left;
+	color: var(--clr-accent);
+}
+#guide-visualizer ul li{
+	margin: 1rem 0;
+	color: var(--clr-text);
+}
+#guide-visualizer strong {
+	color: var(--clr-accent);
+}
+#letsplay{
+	display: block;
+	font-size: 1.2em;
+	margin: 1rem auto .5rem auto;
+	padding: .5rem;
+	color: var(--clr-text);
+	background-color: var(--clr-accent);
+}
+::backdrop {
+	background-color: rgba(10, 10, 10, 0.8);
+}
+/*END OF GUIDE DIALOG STYLE*/
+
 .cards__wrapper {
 	display: grid;
 	height: calc(100vh - 56px);
@@ -61,11 +112,11 @@ body {
 	min-width: 40px;
 	display: flex;
 	flex-flow: column;
-	gap: .5rem;
+	gap: 0.5rem;
 	align-items: center;
 	position: absolute;
 }
-.deck span{
+.deck span {
 	font-weight: 500;
 	font-size: 1.2em;
 	color: var(--clr-accent);
@@ -165,11 +216,11 @@ body {
 	color: var(--clr-text);
 }
 /*styles of dialog content*/
-[data-content-type="win"]{
+[data-content-type="win"] {
 	color: #32d832;
 	border: var(--border-width) solid #32d832;
 }
-[data-content-type="lose"]{
+[data-content-type="lose"] {
 	color: #e93d50;
 	border: var(--border-width) solid #e93d50;
 }
@@ -178,13 +229,13 @@ body {
 	border: var(--border-width) solid #6ca8e2;
 }
 /*stylize the dialog button restart*/
-[data-content-type="win"] .dialog__restart{
+[data-content-type="win"] .dialog__restart {
 	border-color: #32d832;
 }
-[data-content-type="lose"] .dialog__restart{
+[data-content-type="lose"] .dialog__restart {
 	border-color: #e93d50;
 }
-.dialog__restart:active{
+.dialog__restart:active {
 	background-color: #ce1429;
 }
 .hide-button {
@@ -215,6 +266,7 @@ body {
 	flex: 1;
 	transform-style: preserve-3d;
 	transition: all 300ms;
+	cursor: pointer;
 }
 .btn-icon {
 	margin-right: 5px;
@@ -230,7 +282,25 @@ body {
 	transform: scale(0.9, 0.9);
 }
 .--shuffle {
+	z-index: 0;
+	position: relative;
 	background-color: var(--clr-accent);
+}
+@keyframes shuffling {
+	50% {
+		width: 100%;
+	}
+}
+.--shuffle::after {
+	z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: 0;
+	background-color: var(--clr-load-shuffle);
+}
+.load-shuffle.--shuffle::after {
+	animation: shuffling var(--ld-shuffle) linear;
 }
 .--restart {
 	background-color: #181818;
@@ -253,18 +323,18 @@ footer {
 	gap: 1rem;
 	place-content: center;
 	place-items: center;
-	padding: .5rem .5rem 2rem 0.5rem;
+	padding: 0.5rem 0.5rem 2rem 0.5rem;
 	text-align: center;
 	font-family: "Inter", "Segoe UI", sans-serif;
 }
-.footer__logo{
+.footer__logo {
 	margin: 0 auto;
-  width: 8rem;
+	width: 8rem;
 	object-fit: cover;
 	aspect-ratio: 4 / 2;
 }
-.dev{
-	display: flex; 
+.dev {
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -352,26 +422,27 @@ footer {
 		flex: 1;
 		overflow: clip;
 	}
-	:root{
+	:root {
 		--left-right-pt: 2rem;
 	}
-	.computer__points, .user__points{
+	.computer__points,
+	.user__points {
 		top: var(--left-right-pt);
 	}
 	.points__numbers,
 	.points__title {
 		font-size: clamp(1.5rem, 6vw, 2.4rem);
 	}
-	.deck{
+	.deck {
 		top: calc(var(--left-right-pt) + 5rem);
 	}
-	.dialog__content{
+	.dialog__content {
 		max-width: 600px;
 	}
 	.backdrop {
 		height: 100%;
 	}
-	.button__action:not(:disabled):active{
+	.button__action:not(:disabled):active {
 		transition: transform 50ms;
 		transform: scale(0.9, 0.9);
 	}
@@ -390,21 +461,21 @@ footer {
 		font-size: 1.6em;
 	}
 }
-@media (min-width: 1024px){
-	.deck ul{
+@media (min-width: 1024px) {
+	.deck ul {
 		width: 3rem;
 		flex-flow: row wrap;
 	}
-	.footer__logo{
+	.footer__logo {
 		width: 10rem;
 	}
 }
-@media (min-width: 1024px) and (max-height: 768px){
-	footer{
+@media (min-width: 1024px) and (max-height: 768px) {
+	footer {
 		padding: 0;
 		margin: 0 auto;
 	}
-	.footer__logo{
+	.footer__logo {
 		object-fit: contain;
 		aspect-ratio: 4 / 1.5;
 	}

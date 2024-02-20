@@ -10,6 +10,7 @@ ul,
 li,
 a,
 p,
+span,
 ::before,
 ::after {
 	margin: 0;
@@ -27,6 +28,7 @@ body {
 button {
 	border: none;
 	background: none;
+	-webkit-tap-highlight-color: transparent;
 }
 img {
 	height: auto;

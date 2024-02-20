@@ -3,10 +3,13 @@
 	--elevate-time: 630ms;
 	--border-rd: calc(1vw / .5);
 	--aspect: 1.1 / 1.6;
+	--shuffle-t: 500ms;
+	--ld-shuffle: calc(var(--shuffle-t) * 2);
 	/* COLORS */
 	--clr-main: #282A3B;
 	--clr-secondary: #31344A;
 	--clr-accent: #EE2744;
+	--clr-load-shuffle:#0077d2;
 	--clr-text: #F6F6F6;
 	--clr-win: #000;
 	--clr-lose: #000;
