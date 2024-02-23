@@ -3,10 +3,9 @@ const guideVisualizer = document.getElementById("guide-visualizer");
 const letsPlay = document.getElementById("letsplay");
 
 const MARK_GUIDE = `
-### Welcome to the Super Trumps Resident Evil web game! Here's a concise guide:
+### Welcome to the Super Trumps Resident Evil!
 
 1. **Getting Started:**
-   - Familiarize with the interface and buttons.
    - Objective: Win rounds with your best attribute.
 
 2. **Getting Cards:**
@@ -14,28 +13,24 @@ const MARK_GUIDE = `
    - Start with 10 cards.
 
 3. **Playing a Round:**
-   - Choose your attribute and click.
+   - Choose your attribute clicking on it.
+   - Click "Play" to see the computer's card and check who wins the round.
+   - Highest attribute wins.
 
-4. **Revealing Cards:**
-   - Click "Play" to see the computer's card.
-   - Highest attribute wins; ties are draws.
-
-5. **Winning and Losing:**
-   - Losing removes a card from your deck.
+4. **Winning and Losing:**
+   - Losing removes a card from the defeated player.
    - Play until one has no cards left.
 
-6. **Enjoy and Replay:**
+5. **Enjoy and Replay:**
    - Have fun with SP-RE 2024!
-   - Replay to improve and beat the computer.
 `;
 
-
-if(!localStorage.getItem("sp-re-first-time")){
+if (!localStorage.getItem("sp-re-first-time")) {
 	guideVisualizer.innerHTML = DOMPurify.sanitize(marked.parse(MARK_GUIDE));
 	guideDialog.show();
 }
-letsPlay.addEventListener("click", () =>{
-	if(guideDialog instanceof HTMLDialogElement && guideDialog.open){
+letsPlay.addEventListener("click", () => {
+	if (guideDialog instanceof HTMLDialogElement && guideDialog.open) {
 		guideDialog.close();
 		localStorage.setItem("sp-re-first-time", JSON.stringify(true));
 	}

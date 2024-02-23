@@ -6,13 +6,19 @@
 	--shuffle-t: 500ms;
 	--ld-shuffle: calc(var(--shuffle-t) * 2);
 	/* COLORS */
-	--clr-main: #282A3B;
-	--clr-secondary: #31344A;
-	--clr-accent: #EE2744;
-	--clr-load-shuffle:#0077d2;
-	--clr-text: #F6F6F6;
-	--clr-win: #000;
-	--clr-lose: #000;
-	--clr-tie: #000;
+	
+	--clr-main: #090D10;
+	--clr-secondary: #21292C;
+	--clr-card: #0e1418;
+	--clr-dialog: #090D1090;
+	--clr-attr-item: #243040;
+	--clr-accent: #E3DDA4;
+	--clr-heading: #C2B477;
+	--clr-load-shuffle: crimson;
+	--clr-text: #f1f1f1;
+	--clr-legendary: #f8dc46;
+	--clr-win: lawngreen;
+	--clr-lose: crimson;
+	--clr-tie: lightsteelblue;
 	--clr-attr-list: rgba(10, 10, 10, 0.8);
 }

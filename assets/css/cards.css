@@ -9,17 +9,16 @@
 	}
 	50% {
 		box-shadow:
-			0 0 0 2px gold,
-			0 5px 20px -2px gold;
+			0 0 5px 2px var(--clr-legendary),
+			0 5px 20px -2px var(--clr-legendary),
+			0 10px 20px -5px var(--clr-legendary);
 	}
 }
 @keyframes indicateAction {
 	from {
-		filter: brightness(100%);
 		border-bottom: 2px solid transparent;
 	}
 	to {
-		filter: brightness(150%);
 		border-bottom: 2px solid var(--clr-accent);
 	}
 }
@@ -39,6 +38,7 @@
 	transform-origin: center;
 	transform-style: preserve-3d;
 	color: var(--clr-text);
+	border: 2px solid var(--clr-accent);
 }
 .card div {border-radius: inherit;}
 .front,.back {
@@ -49,7 +49,7 @@
 }
 .front {
 	transform: rotateY(180deg);
-	background-color: #181818;
+	background-color: var(--clr-card);
 }
 .front > div {
 	position: relative;
@@ -64,7 +64,7 @@
 	width: 100%;
 	text-align: center;
 	padding-top: .5rem;
-	background-color: rgba(10, 10, 10, 0.8);
+	background-color: var(--clr-attr-list);
 }
 .card__image {
 	position: absolute;
@@ -75,7 +75,7 @@
 	z-index: -1;
 }
 .back {
-	background-color: black;
+	background-color: var(--clr-card);
 	background-image: url("/assets/image/umbrella-mobile-logo.webp");
 	background-repeat: no-repeat;
 	background-size: 40%;
@@ -83,13 +83,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	filter: brightness(85%);
 }
 .back span{
+	color: var(--clr-accent);
 	font-weight: 400;
 	margin-top: 5rem;
 	font-size: 1.3rem;
 	user-select: none;
+	text-transform: capitalize;
 } 
 .rotate {
 	transition: transform var(--rotate-time);
@@ -112,6 +113,7 @@
 	width: 100%;
 	background-color: var(--clr-attr-list);
 	z-index: 0;
+	color: var(--clr-text);
 }
 .card__attr__list li {width: 100%;}
 .card__attr__list label {
@@ -174,7 +176,11 @@ input[type="radio"]:checked + .custom-rad::after {
 	margin: 0 auto 0 0;
 	transition: all 200ms;
 	width: 100%;
-	background-color: #e93d50;
+	background-color: var(--clr-accent);
+}
+.card__attr__list label:has(input[type="radio"]:checked) {
+	font-weight: 500;
+	color: var(--clr-main);
 }
 @media (max-width: 375px) {
 	.back span {
@@ -206,7 +212,7 @@ input[type="radio"]:checked + .custom-rad::after {
 	}
 	.back{
 		background-size: 50%;
-		background-image: url(/assets/image/umbrella-svg-logo.svg");
+		background-image: url("/assets/image/umbrella-svg-logo.svg");
 	}
 	.back span {
 		margin-top: 10rem;

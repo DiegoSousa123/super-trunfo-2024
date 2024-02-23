@@ -366,30 +366,28 @@ function createDeck() {
 	let s = shuffled.length / 2;
 	userDeck = shuffled.slice(0, s);
 	computerDeck = shuffled.slice(s, shuffled.length);
-	// console.log(`Created the deck: userDeck${JSON.stringify(userDeck, null, 5)} with size: ${userDeck.length}`);
-	// console.log(`Created the deck: computerDeck${JSON.stringify(computerDeck, null, 5)} with size: ${computerDeck.length}`);
 }
 var objs = [
 	{
 		name: "Jill Valentine",
 		image: "/assets/image/jill.webp",
 		attack: 9,
-		agility: 8.5,
+		agility: 9,
 		defense: 7
 	},
 	{
 		name: "Ada Wong",
-		image: "/assets/image/ada.webp",
+		image: "/assets/image/ada-wong.webp",
 		attack: 9,
-		agility: 9,
+		agility: 10,
 		defense: 7.5
 	},
 	{
 		name: "Claire Redfield",
 		image: "/assets/image/claire_2.webp",
 		attack: 7,
-		agility: 8.5,
-		defense: 6.5
+		agility: 9,
+		defense: 7.5
 	},
 	{
 		name: "Piers Nivans",
@@ -409,9 +407,9 @@ var objs = [
 		legend: true,
 		name: "Chris Redfield",
 		image: "/assets/image/chris.webp",
-		attack: 9.5,
+		attack: 10,
 		agility: 5.5,
-		defense: 7.5
+		defense: 9
 	},
 	{
 		name: "Ethan Winters",
@@ -445,8 +443,8 @@ var objs = [
 		name: "Leon S. Kennedy",
 		image: "/assets/image/leon.webp",
 		attack: 8,
-		agility: 9,
-		defense: 7.5
+		agility: 9.5,
+		defense: 8
 	},
 	{
 		name: "Luiz Serra",
@@ -473,15 +471,15 @@ var objs = [
 		name: "Bitorez",
 		image: "/assets/image/bitorez.webp",
 		attack: 9.5,
-		agility: 5,
+		agility: 6.5,
 		defense: 8.5
 	},
 	{
 		legend: true,
 		name: "Albert Wesker",
 		image: "/assets/image/wesker.webp",
-		attack: 9,
-		agility: 10,
+		attack: 10,
+		agility: 9.5,
 		defense: 7.5
 	},
 	{
@@ -494,9 +492,9 @@ var objs = [
 	{
 		name: "Nemesis",
 		image: "/assets/image/nemesis.webp",
-		attack: 9,
+		attack: 9.5,
 		agility: 5,
-		defense: 8.5
+		defense: 9
 	},
 	{
 		name: "Sherry Birkin",
