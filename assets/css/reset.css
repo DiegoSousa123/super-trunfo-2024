@@ -11,6 +11,7 @@ li,
 a,
 p,
 span,
+button,
 ::before,
 ::after {
 	margin: 0;

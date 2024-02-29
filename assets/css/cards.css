@@ -86,7 +86,7 @@
 }
 .back span{
 	color: var(--clr-accent);
-	font-weight: 400;
+	font-weight: var(--ft-wg-700);
 	margin-top: 5rem;
 	font-size: 1.3rem;
 	user-select: none;
@@ -179,8 +179,8 @@ input[type="radio"]:checked + .custom-rad::after {
 	background-color: var(--clr-accent);
 }
 .card__attr__list label:has(input[type="radio"]:checked) {
-	font-weight: 500;
-	color: var(--clr-main);
+	font-weight: var(--ft-wg-700);
+	color: var(--clr-attr-item);
 }
 @media (max-width: 375px) {
 	.back span {
