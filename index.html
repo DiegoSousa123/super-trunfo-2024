@@ -14,172 +14,181 @@
 			referrerpolicy="no-referrer" />
 		<title>Super Trumps RE 2024</title>
 		<meta name="description" content="Enjoy the Super Trumps with Resident Evil characters" />
-		<link rel="stylesheet" href="./assets/css/reset.min.css" />
-		<link fetchpriority="high" rel="preload" as="image" href="./assets/image/umbrella-mobile-logo.webp"/> 
-		
-		<!--<link href="https://fonts.cdnfonts.com/css/led-digital-7" rel="stylesheet" /> -->
-		<link rel="stylesheet" href="./assets/css/vars.min.css" />
-		<link rel="stylesheet" href="./assets/css/cards.min.css" />
-		<link rel="stylesheet" href="./assets/css/main.min.css" />
-	   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-	   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js" integrity="sha512-9+ilAOeXY8qy2bw/h51MmliNNHvdyhTpLIlqDmVpD26z8VjVJsUJtk5rhbDIUvYiD+EpGoAu0xTa7MhZohFQjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" href="./assets/css/reset.css" />
+		<link rel="stylesheet" href="./assets/css/vars.css" />
+		<link rel="stylesheet" href="./assets/css/cards.css"/>
+		<link rel="stylesheet" href="./assets/css/main.css" />
+	   
 	</head>
 	<body>
-		<main>
-			<div class="cards__wrapper">
-				<!-- INITIAL GUIDE -->
-				<dialog id="guide-dialog">
-					<div>
-						<div id="guide-visualizer"></div>
-						<button id="letsplay">Let's play</button>
-					</div>
-				</dialog>
-				<!-- COMPUTER POINTS -->
-				<div class="computer__points">
-					<p class="points__title"><strong><i class="fa-solid fa-computer"></i></strong></p>
-					<div class="points__numbers">
-						<span>00</span>
-						<span class="points" id="pt-computer">0</span>
-					</div>
-					<!-- COMPUTER DECK -->
-					<div class="deck computer-deck">
-						<span data-remains-cards="computer">10</span>
-						<ul>
-							<!-- something here -->
-						</ul>
-					</div>
-				</div>
-				
-				<!-- COMPUTER CARD -->
-				<div class="card__view" data-player="computer">
-					<div class="card card--computer" id="machine">
-						<div class="front">
-							<div>
-								<img class="card__image" id="img-computer" src="./assets/image/card-placeholder.svg" loading="lazy" alt="" />
-								<span class="card__name" id="computer-card-name">Name</span>
-								<ul class="card__attr__list">
-									<li>
-										<span class="attr-computer" data-attribute-name="attack" data-choose="no"
-											>Attack: <span data-attr="computer">0</span></span
-										>
-									</li>
-									<li>
-										<span class="attr-computer" data-attribute-name="agility" data-choose="no">
-											Agility: <span data-attr="computer">0</span></span
-										>
-									</li>
-									<li>
-										<span class="attr-computer" data-attribute-name="defense" data-choose="no">
-											Defense: <span data-attr="computer">0</span>
-										</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="back"><span>Umbrella corp.</span></div>
-					</div>
-				</div>
-				<!-- USER CARD -->
-				<div class="card__view" data-player="user">
-					<div class="card card--user" id="user">
-						<div class="front">
-							<div>
-								<img class="card__image" id="img-user" src="./assets/image/card-placeholder.svg" alt=""/>
-								<span class="card__name" id="user-card-name">Name</span>
-								<ul class="card__attr__list">
-									<li>
-										<label for="rad1"
-											><input id="rad1" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span> Attack:
-											<span data-attr="user">0</span></label
-										>
-									</li>
-									<li>
-										<label for="rad2"
-											><input id="rad2" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Agility:
-											<span data-attr="user">0</span></label
-										>
-									</li>
-									<li>
-										<label for="rad3"
-											><input id="rad3" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Defense:
-											<span data-attr="user">0</span></label
-										>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="back"><span>Umbrella corp.</span></div>
-					</div>
-				</div>
-				<!-- USER POINTS -->
-				<div class="user__points">
-					<p class="points__title"><strong><i class="fa-solid fa-user"></i></strong></p>
-					<div class="points__numbers">
-						<span>00</span>
-						<span class="points" id="pt-user">0</span>
-					</div>
-					<!-- USER DECK  -->
-					<div class="deck user-deck">
-						<span data-remains-cards="user">10</span>
-						<ul>
-						<!-- something here -->
-						</ul>
-					</div>
-				</div>
-				<div class="game__actions">
-					<button class="button__action --shuffle" id="btn-shuffle">
-						<span class="btn-icon fa-solid fa-shuffle"></span><span>Shuffle</span>
-					</button>
-					<button class="button__action --restart" id="btn-restart">
-						<span class="fa-solid fa-rotate-right"></span>
-						<span>Restart</span>
-					</button>
-					<button class="button__action --play" id="btn-play" disabled>
-						<span class="btn-icon fa-solid fa-gamepad"></span><span>Play</span>
-					</button>
-				</div>
-				<!-- WIN/LOOSE DIALOG -->
-				<dialog id="dialogWinLose">
-					<div class="dialog__content" data-content-type="default">
-						<span id="dialog-title">something here...</span>
-						<div class="dialog__button">
-							<button class="dialog__restart" id="dialog-tryagain">Restart</button>
-						</div>
-					</div>
-				</dialog>
-				<!-- DIALOG BACKDROP  -->
-				<div class="backdrop"></div>
-			</div>
-		</main>
-		<footer>
-			<div>
-				<img class="footer__logo" 
-				src="./assets/image/sp-re-logo-svg.svg" 
-				alt="Super Trumps Resident Evil logo">
-				<a href="https://github.com/DiegoSousa123/super-trunfo-2024">Go to repository</a>
-			</div>
-			<div class="dev">
-				<p>created by <a href="#">diêgo sousa</a></p>
-				<div class="contact">
-					<a href=""><i class="fa-brands fa-github"></i><em>Diêgo Sousa on github</em></a>
-				</div>
-			</div>
-			<div>
-				<p class="disclaimer">
-					"resident evil" is a trademark of capcom co., ltd.<br />
-					All rights reserved.
-				</p>
-			</div>
-		</footer>
-		<!-- TEMPLATE TO REPRESENT DECK CARDS -->
-		<template id="template-deck">
-			<li class="card-item">
-				<div class="item">
-					<!--<img src="/assets/image/umbrella-svg-logo.svg" width="40" height="40"> -->
-				</div>
-			</li>
-		</template>
-		<script src="./assets/js/guide.min.js" type="text/javascript"></script>
-		<script src="./assets/js/index.min.js" type="text/javascript" defer></script>
+	  	<main>
+	  		<div class="cards__wrapper">
+	  			
+	  			<!-- INITIAL MENU -->
+	  			<div class="initial__menu" id="initial-menu">
+	  				<h1>SP-RE 2024</h1>
+	  				<button class="menu__start" id="button-start">Start</button>
+	  				<button class="menu__help" id="button-help">
+	  						<i class="fa-solid fa-circle-question"></i>
+	  				</button>
+	  			</div>
+	  			
+	  			<!-- GUIDE -->
+	  			<dialog id="guide-dialog">
+	  				<div>
+	  					<div id="guide-visualizer"></div>
+	  					<button id="letsplay">Let's play</button>
+	  				</div>
+	  			</dialog>
+	  			<!-- COMPUTER POINTS -->
+	  			<div class="computer__points" data-game-element>
+	  				<p class="points__title"><strong><i class="fa-solid fa-computer"></i></strong></p>
+	  				<div class="points__numbers">
+	  					<span>00</span>
+	  					<span class="points" id="pt-computer">0</span>
+	  				</div>
+	  				<!-- COMPUTER DECK -->
+	  				<div class="deck computer-deck">
+	  					<span data-remains-cards="computer">10</span>
+	  					<ul>
+	  						<!-- something here -->
+	  					</ul>
+	  				</div>
+	  			</div>
+	  			
+	  			<!-- COMPUTER CARD -->
+	  			<div class="card__view" data-player="computer" data-game-element>
+	  				<div class="card card--computer" id="machine">
+	  					<div class="front">
+	  						<div>
+	  							<img class="card__image" id="img-computer" src="./assets/image/card-placeholder.svg" loading="lazy" alt="" />
+	  							<span class="card__name" id="computer-card-name">Name</span>
+	  							<ul class="card__attr__list">
+	  								<li>
+	  									<span class="attr-computer" data-attribute-name="attack" data-choose="no"
+	  										>Attack: <span data-attr="computer">0</span></span
+	  									>
+	  								</li>
+	  								<li>
+	  									<span class="attr-computer" data-attribute-name="agility" data-choose="no">
+	  										Agility: <span data-attr="computer">0</span></span
+	  									>
+	  								</li>
+	  								<li>
+	  									<span class="attr-computer" data-attribute-name="defense" data-choose="no">
+	  										Defense: <span data-attr="computer">0</span>
+	  									</span>
+	  								</li>
+	  							</ul>
+	  						</div>
+	  					</div>
+	  					<div class="back"><span>Umbrella corp.</span></div>
+	  				</div>
+	  			</div>
+	  			<!-- USER CARD -->
+	  			<div class="card__view" data-player="user" data-game-element>
+	  				<div class="card card--user" id="user">
+	  					<div class="front">
+	  						<div>
+	  							<img class="card__image" id="img-user" src="./assets/image/card-placeholder.svg" alt=""/>
+	  							<span class="card__name" id="user-card-name">Name</span>
+	  							<ul class="card__attr__list">
+	  								<li>
+	  									<label for="rad1"
+	  										><input id="rad1" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span> Attack:
+	  										<span data-attr="user">0</span></label
+	  									>
+	  								</li>
+	  								<li>
+	  									<label for="rad2"
+	  										><input id="rad2" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Agility:
+	  										<span data-attr="user">0</span></label
+	  									>
+	  								</li>
+	  								<li>
+	  									<label for="rad3"
+	  										><input id="rad3" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Defense:
+	  										<span data-attr="user">0</span></label
+	  									>
+	  								</li>
+	  							</ul>
+	  						</div>
+	  					</div>
+	  					<div class="back"><span>Umbrella corp.</span></div>
+	  				</div>
+	  			</div>
+	  			<!-- USER POINTS -->
+	  			<div class="user__points" data-game-element>
+	  				<p class="points__title"><strong><i class="fa-solid fa-user"></i></strong></p>
+	  				<div class="points__numbers">
+	  					<span>00</span>
+	  					<span class="points" id="pt-user">0</span>
+	  				</div>
+	  				<!-- USER DECK  -->
+	  				<div class="deck user-deck">
+	  					<span data-remains-cards="user">10</span>
+	  					<ul>
+	  					<!-- something here -->
+	  					</ul>
+	  				</div>
+	  			</div>
+	  			<!-- GAME ACTIONS -->
+	  			<div class="game__actions" data-game-element>
+	  				<button class="button__action --shuffle" id="btn-shuffle">
+	  					<span class="btn-icon fa-solid fa-shuffle"></span><span>Shuffle</span>
+	  				</button>
+	  				<button class="button__action --restart" id="btn-restart">
+	  					<span class="fa-solid fa-rotate-right"></span>
+	  					<span>Restart</span>
+	  				</button>
+	  				<button class="button__action --play" id="btn-play" disabled>
+	  					<span class="btn-icon fa-solid fa-gamepad"></span><span>Play</span>
+	  				</button>
+	  			</div>
+	  			<!-- WIN/LOOSE DIALOG -->
+	  			<dialog id="dialogWinLose">
+	  				<div class="dialog__content" data-content-type="default">
+	  					<span id="dialog-title">something here...</span>
+	  					<div class="dialog__button">
+	  						<button class="dialog__restart" id="dialog-tryagain">Restart</button>
+	  					</div>
+	  				</div>
+	  			</dialog>
+	  			<!-- DIALOG BACKDROP  -->
+	  			<div class="backdrop"></div>
+	  		</div>
+	  	</main>
+	  	<footer>
+	  		<div>
+	  			<img fetchpriority="low" class="footer__logo" 
+	  			src="./assets/image/sp-re-logo-svg.svg"
+	  			id="sp-logo"
+	  			alt="Super Trumps Resident Evil logo">
+	  			<a href="https://github.com/DiegoSousa123/super-trunfo-2024">Go to repository</a>
+	  		</div>
+	  		<div class="dev">
+	  			<p>created by <a href="#">diêgo sousa</a></p>
+	  			<div class="contact">
+	  				<a href=""><i class="fa-brands fa-github"></i><em>Diêgo Sousa on github</em></a>
+	  			</div>
+	  		</div>
+	  		<div>
+	  			<p class="disclaimer">
+	  				"resident evil" is a trademark of capcom co., ltd.<br />
+	  				All rights reserved.
+	  			</p>
+	  		</div>
+	  	</footer>
+	  	<!-- TEMPLATE TO REPRESENT DECK CARDS -->
+	  	<template id="template-deck">
+	  		<li class="card-item">
+	  			<div class="item">
+	  			</div>
+	  		</li>
+	  	</template>
+	  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" async></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js" integrity="sha512-9+ilAOeXY8qy2bw/h51MmliNNHvdyhTpLIlqDmVpD26z8VjVJsUJtk5rhbDIUvYiD+EpGoAu0xTa7MhZohFQjA==" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+		<script type="text/javascript" src="./assets/js/guide.js" async></script>
+		<script src="./assets/js/index.js" type="text/javascript"></script>
 	</body>
 </html>

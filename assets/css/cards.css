@@ -14,14 +14,6 @@
 			0 10px 20px -5px var(--clr-legendary);
 	}
 }
-@keyframes indicateAction {
-	from {
-		border-bottom: 2px solid transparent;
-	}
-	to {
-		border-bottom: 2px solid var(--clr-accent);
-	}
-}
 .card__view {
 	aspect-ratio: var(--aspect);
 	width: 240px;
@@ -34,7 +26,7 @@
 	margin: auto;
 	border-radius: var(--border-rd);
 	position: relative;
-	transition: transform var(--rotate-time);
+	transition: transform var(--rotate-time) var(--rotate-time-func);
 	transform-origin: center;
 	transform-style: preserve-3d;
 	color: var(--clr-text);
@@ -61,6 +53,7 @@
 	align-items: center;
 }
 .card__name {
+	font-weight: var(--ft-wg-700);
 	width: 100%;
 	text-align: center;
 	padding-top: .5rem;
@@ -93,7 +86,7 @@
 	text-transform: capitalize;
 } 
 .rotate {
-	transition: transform var(--rotate-time);
+	transition: transform var(--rotate-time) var(--rotate-time-func);
 	transform: rotateY(180deg);
 	transform-style: preserve-3d;
 }
@@ -114,6 +107,7 @@
 	background-color: var(--clr-attr-list);
 	z-index: 0;
 	color: var(--clr-text);
+	font-weight: 600;
 }
 .card__attr__list li {width: 100%;}
 .card__attr__list label {
@@ -138,6 +132,7 @@
 }
 /* hide computer attribute that is 
 not the same selected by user*/
+
 .attr-computer:not([data-choose="yes"])::after{
 	content: "";
 	position: absolute;
@@ -159,10 +154,6 @@ input[type="radio"] {
 	inset: 0;
 	z-index: -1;
 }
-/* indicates to user that have interaction on attributes */
-.rotate .card__attr__list label .custom-rad {
-	animation: indicateAction 300ms 1s linear 3;
-}
 .custom-rad::after {
 	content: "";
 	position: absolute;
@@ -179,7 +170,6 @@ input[type="radio"]:checked + .custom-rad::after {
 	background-color: var(--clr-accent);
 }
 .card__attr__list label:has(input[type="radio"]:checked) {
-	font-weight: var(--ft-wg-700);
 	color: var(--clr-attr-item);
 }
 @media (max-width: 375px) {

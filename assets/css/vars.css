@@ -8,6 +8,8 @@
 	--ld-shuffle: calc(var(--shuffle-t) * 2);
 	--ft-wg-300: 300;
 	--ft-wg-700: 700;
+	--anim-time-func: cubic-bezier(0.075, 0.82, 0.165, 1);
+	--rotate-time-func: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	/* COLORS */
 	
 	--clr-main: #090D10;
@@ -24,14 +26,15 @@
 	--clr-win: lawngreen;
 	--clr-lose: crimson;
 	--clr-tie: lightsteelblue;
-	--clr-attr-list: rgba(10, 10, 10, 0.8);
+	--clr-attr-list: rgba(5, 5, 5, 0.8);
 }
 @media (prefers-color-scheme: dark){
 	:root{
-			--clr-secondary: #0f1112;
-			--clr-button-text: #f1f1f1;
-			--clr-attr-item: #f1f1f1;
-			--clr-accent: #6F6B39;
-			--clr-legendary: #847b1a;
+		--clr-text: #e0e0e0;
+		--clr-secondary: #0f1112;
+		--clr-button-text: #f1f1f1;
+		--clr-attr-item: #e0e0e0;
+		--clr-accent: #6F6B39;
+		--clr-legendary: #847b1a;
 	}
 }

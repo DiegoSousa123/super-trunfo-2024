@@ -3,7 +3,7 @@ const guideVisualizer = document.getElementById("guide-visualizer");
 const letsPlay = document.getElementById("letsplay");
 
 const MARK_GUIDE = `
-### Welcome to the Super Trumps Resident Evil!
+### Super Trumps Resident Evil
 
 1. **Getting Started:**
    - Objective: Win rounds with your best attribute.
@@ -24,14 +24,12 @@ const MARK_GUIDE = `
 5. **Enjoy and Replay:**
    - Have fun with SP-RE 2024!
 `;
-
-if (!localStorage.getItem("sp-re-first-time")) {
+function showHelp(){
 	guideVisualizer.innerHTML = DOMPurify.sanitize(marked.parse(MARK_GUIDE));
 	guideDialog.show();
 }
 letsPlay.addEventListener("click", () => {
 	if (guideDialog instanceof HTMLDialogElement && guideDialog.open) {
 		guideDialog.close();
-		localStorage.setItem("sp-re-first-time", JSON.stringify(true));
 	}
 });

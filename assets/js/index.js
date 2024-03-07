@@ -1,5 +1,4 @@
 const DEFAULT_IMAGE = "./assets/image/card-placeholder.svg";
-
 const cardComputer = document.getElementById("machine");
 const cardUser = document.getElementById("user");
 //cards containers
@@ -11,7 +10,6 @@ const deckWrapperComputer = document.querySelector(".computer-deck");
 const listDeckUser = deckWrapperUser.querySelector("ul");
 const listDeckComputer = deckWrapperComputer.querySelector("ul");
 const templateItem = document.getElementById("template-deck");
-
 const displayPointsUser = document.getElementById("pt-user");
 const displayPointsComputer = document.getElementById("pt-computer");
 const computerAttributes = document.querySelectorAll("[data-attr=computer]");
@@ -29,15 +27,28 @@ const imgUser = document.getElementById("img-user");
 const imgComputer = document.getElementById("img-computer");
 const userCardName = document.getElementById("user-card-name");
 const computerCardName = document.getElementById("computer-card-name");
+const menuStart = document.getElementById("button-start");
+const menuHelp = document.getElementById("button-help");
+const menu = document.getElementById("initial-menu");
 let pointsUser = 0; //User pontuation
 let pointsComputer = 0; //Computer pontuation
 let user, computer; //get player cards
 let userDeck = [],
 	computerDeck = []; // cards arrays
 
-hideButton(dialogButtons);
+//start the game
+if(!menu.getAttribute("data-game-element")){
+	menuHelp.addEventListener('click', ()=>{
+		showHelp(); //function from guide.js
+	});
+	menuStart.addEventListener("click", ()=>{
+		document.querySelectorAll("[data-game-element]").forEach((item) => item.removeAttribute("data-game-element"));
+		menu.setAttribute("data-game-element", "");
+	});
+}
 
 //BUTTONS SECTIONS
+hideButton(dialogButtons);
 const enableElement = (e) => e.removeAttribute("disabled");
 const disableElement = (e) => e.setAttribute("disabled", "true");
 
@@ -50,9 +61,8 @@ playBtn.onclick = () => {
 		disableElement(playBtn); //disable the play btn to prevent some problems...
 		setTimeout(function () {
 			//calls the function to validate who has the greater attribute
-			checkVictory(user, computer);
+			return checkVictory(user, computer);
 		}, 1500);
-		return;
 	}
 };
 
@@ -83,7 +93,6 @@ dialogRestartButton.onclick = () => {
 	restartGame();
 	hideButton(dialogButtons);
 };
-
 
 //LOGIC SECTION
 
@@ -200,11 +209,11 @@ function showDialog(title) {
 	
 	//close the dialog after 1500ms if was not a winner
 	if (title !== "defeat" && title !== "winner") {
-		dialogRes.classList.add("animate-dialog");
-		setTimeout(() => {
-			resetState();
-			dialogRes.classList.remove("animate-dialog");
-		}, 1500);
+			dialogRes.classList.add("animate-dialog");
+			dialogRes.addEventListener("animationend", () =>{
+				resetState();
+				dialogRes.classList.remove("animate-dialog");
+			});
 	}
 }
 function closeDialog() {
@@ -344,16 +353,14 @@ function rotateCard(card, viewCard, degrees) {
 }
 
 //Fisher-Yates shuffle algorithm
-//return a new shuffled array
 function shuffleCardArray(array) {
-	let old, copy;
-	copy = array.slice();
+	let old;
 	for (let i = array.length - 1; i >= 0; i--) {
 		let r_n = Math.floor(Math.random() * (i + 1));
-		old = copy[i];
-		[copy[i], copy[r_n]] = [copy[r_n], old];
+		old = array[i];
+		[array[i], array[r_n]] = [array[r_n], old];
 	}
-	return copy;
+	return array;
 }
 
 //call the shuffleCardArray function to get a copy of the main array and shuffle it.
