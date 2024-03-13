@@ -59,9 +59,10 @@ playBtn.onclick = () => {
 		rotateCard(cardComputer, viewComputer, 180);
 		isLegendary(computer, cardComputer);
 		disableElement(playBtn); //disable the play btn to prevent some problems...
-		setTimeout(function () {
+		let tOut = setTimeout(function () {
 			//calls the function to validate who has the greater attribute
 			return checkVictory(user, computer);
+			clearTimeout(tOut);
 		}, 1500);
 	}
 };
@@ -81,11 +82,12 @@ shuffleBtn.onclick = () => {
 	resetDataChooseAttribute();
 	disableElement(shuffleBtn);
 	shuffleBtn.classList.add("load-shuffle");
-	setTimeout(function () {
+	let tOut = setTimeout(function () {
 		rotateCard(cardUser, viewUser, 180);
 		isLegendary(user, cardUser);
 		enableElement(playBtn);
 		shuffleBtn.classList.remove("load-shuffle");
+		clearTimeout(tOut);
 	}, parseInt(t));
 };
 //Try again button, restart the game.
@@ -308,7 +310,7 @@ function clearRadios() {
 function getAttributeSelected() {
 	let selected;
 	for (let radio of iptRadios) {
-		if (radio.checked === true) {
+		if (radio.checked) {
 			selected = radio.value;
 			break; //breaks the loop when a checked radio is found.
 		}
@@ -379,114 +381,114 @@ var objs = [
 		name: "Jill Valentine",
 		image: "/assets/image/jill.webp",
 		attack: 9,
-		agility: 9,
-		defense: 7
+		agility: 7.5,
+		defense: 8.5
 	},
 	{
 		name: "Ada Wong",
 		image: "/assets/image/ada-wong.webp",
-		attack: 9,
-		agility: 10,
-		defense: 7.5
+		attack: 8,
+		agility: 9,
+		defense: 7
 	},
 	{
 		name: "Claire Redfield",
 		image: "/assets/image/claire_2.webp",
 		attack: 7,
-		agility: 9,
-		defense: 7.5
+		agility: 8,
+		defense: 8
 	},
 	{
 		name: "Piers Nivans",
 		image: "/assets/image/piers.webp",
 		attack: 7,
 		agility: 5,
-		defense: 8
+		defense: 9
 	},
 	{
 		name: "Rebecca Chambers",
 		image: "/assets/image/rebecca_chambers.webp",
 		attack: 6,
-		agility: 9,
-		defense: 6.5
+		agility: 8,
+		defense: 7
 	},
 	{
 		legend: true,
 		name: "Chris Redfield",
 		image: "/assets/image/chris.webp",
 		attack: 10,
-		agility: 5.5,
-		defense: 9
+		agility: 5,
+		defense: 8.5
 	},
 	{
 		name: "Ethan Winters",
 		image: "/assets/image/ethan.webp",
 		attack: 6,
-		agility: 7,
-		defense: 8
+		agility: 6,
+		defense: 9
 	},
 	{
 		name: "Vector",
 		image: "/assets/image/vector.webp",
 		attack: 7.5,
-		agility: 8,
+		agility: 7,
 		defense: 5
 	},
 	{
 		name: "Hunk",
 		image: "/assets/image/hunk.webp",
 		attack: 8,
-		agility: 8.5,
-		defense: 7.5
+		agility: 7.5,
+		defense: 8
 	},
 	{
 		name: "Helena Harper",
 		image: "/assets/image/helena.webp",
 		attack: 7,
-		agility: 8,
-		defense: 7
+		agility: 7,
+		defense: 8.5
 	},
 	{
 		name: "Leon S. Kennedy",
 		image: "/assets/image/leon.webp",
 		attack: 8,
-		agility: 9.5,
-		defense: 8
+		agility: 9,
+		defense: 7
 	},
 	{
 		name: "Luiz Serra",
 		image: "/assets/image/luiz.webp",
 		attack: 5.5,
-		agility: 7,
-		defense: 7.5
+		agility: 6.5,
+		defense: 8
 	},
 	{
 		name: "Carlos Oliveira",
 		image: "/assets/image/carlos.webp",
 		attack: 7,
-		agility: 7,
-		defense: 8
+		agility: 6,
+		defense: 9
 	},
 	{
 		name: "Barry Burton",
 		image: "/assets/image/barry.webp",
 		attack: 8,
-		agility: 6,
-		defense: 8
+		agility: 5.5,
+		defense: 9
 	},
 	{
 		name: "Bitorez",
 		image: "/assets/image/bitorez.webp",
-		attack: 9.5,
-		agility: 6.5,
-		defense: 8.5
+		attack: 9,
+		agility: 5.5,
+		defense: 9
 	},
 	{
 		legend: true,
 		name: "Albert Wesker",
 		image: "/assets/image/wesker.webp",
-		attack: 10,
-		agility: 9.5,
+		attack: 8.5,
+		agility: 10,
 		defense: 7.5
 	},
 	{
@@ -494,28 +496,29 @@ var objs = [
 		image: "/assets/image/krauser.webp",
 		attack: 6.5,
 		agility: 8,
-		defense: 9
+		defense: 9.5
 	},
 	{
+		legend: true,
 		name: "Nemesis",
 		image: "/assets/image/nemesis.webp",
-		attack: 9.5,
+		attack: 8,
 		agility: 5,
-		defense: 9
+		defense: 9.5
 	},
 	{
 		name: "Sherry Birkin",
 		image: "/assets/image/sherry.webp",
 		attack: 6.5,
-		agility: 9,
-		defense: 7
+		agility: 8,
+		defense: 7.5
 	},
 	{
 		name: "Jake Miller",
 		image: "/assets/image/jake.webp",
 		attack: 7,
-		agility: 9,
-		defense: 8
+		agility: 8,
+		defense: 8.5
 	}
 ];
 

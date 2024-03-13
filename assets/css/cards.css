@@ -5,7 +5,7 @@
 }
 @keyframes legendary {
 	0% {
-		box-shadow: 0 0 0 3px transparent;
+		box-shadow: 0 0 5px 2px transparent;
 	}
 	50% {
 		box-shadow:
@@ -29,10 +29,11 @@
 	transition: transform var(--rotate-time) var(--rotate-time-func);
 	transform-origin: center;
 	transform-style: preserve-3d;
+	will-change: transform;
 	color: var(--clr-text);
 	border: 2px solid var(--clr-accent);
 }
-.card div {border-radius: inherit;}
+.card div {border-radius: var(--border-rd);}
 .front,.back {
 	backface-visibility: hidden;
 	transform: rotateX(0deg); /* fix for a sinister Moz bug*/
@@ -94,7 +95,24 @@
 	animation: elevateCard var(--elevate-time) ease;
 }
 .legendary-card {
-	animation: legendary 3s linear infinite;
+	border-color: var(--clr-legendary);
+	animation: legendary 3s ease-in-out infinite;
+}
+.legendary-card::after{
+	border-radius: var(--border-rd) var(--border-rd) 0px 0px;
+	text-align: center;
+	line-height: 1.5;
+	font-weight: var(--ft-wg-700);
+	transform: rotateY(-180deg);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	content: "Legendary";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--clr-attr-list);
+	color: var(--clr-legendary);
 }
 .card__attr__list {
 	display: flex;
@@ -208,7 +226,7 @@ input[type="radio"]:checked + .custom-rad::after {
 		margin-top: 10rem;
 		font-size: clamp(1.3rem, 4vw, 1.5rem);
 	}
-	.card__attr__list{
+	.card__attr__list, .card__name, .legendary-card::after{
 		font-size: clamp(1rem, 4vw, 1.5rem);
 	}
 }
