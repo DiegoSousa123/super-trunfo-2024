@@ -332,7 +332,7 @@ function getAttributeSelected() {
 	return selected;
 }
 function isAttributeSelected() {
-	return getAttributeSelected() != null ? true : false;
+	return getAttributeSelected() != null;
 }
 
 /* 
