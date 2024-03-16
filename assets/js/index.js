@@ -20,7 +20,7 @@ const dialogContent = document.querySelector(".dialog__content");
 const dialogResBackdrop = document.querySelector(".backdrop");
 const dialogButtons = document.querySelector(".dialog__button");
 const dialogRestartButton = document.getElementById("dialog-tryagain");
-const restartBtn = document.getElementById("btn-restart"); 
+const restartBtn = document.getElementById("btn-restart");
 const playBtn = document.getElementById("btn-play");
 const shuffleBtn = document.getElementById("btn-shuffle");
 const imgUser = document.getElementById("img-user");
@@ -37,11 +37,11 @@ let userDeck = [],
 	computerDeck = []; // cards arrays
 
 //start the game
-if(!menu.getAttribute("data-game-element")){
-	menuHelp.addEventListener('click', ()=>{
+if (!menu.getAttribute("data-game-element")) {
+	menuHelp.addEventListener("click", () => {
 		showHelp(); //function from guide.js
 	});
-	menuStart.addEventListener("click", ()=>{
+	menuStart.addEventListener("click", () => {
 		document.querySelectorAll("[data-game-element]").forEach((item) => item.removeAttribute("data-game-element"));
 		menu.setAttribute("data-game-element", "");
 	});
@@ -67,15 +67,15 @@ playBtn.onclick = () => {
 	}
 };
 
-restartBtn.onclick = () =>{
+restartBtn.onclick = () => {
 	!(pointsUser == 0 && pointsComputer == 0) ? restartGame() : null;
-}
+};
 
 //call the getCard function to get a randomly card to user and computer
 //list the attributes on the cards and show the user card.
 shuffleBtn.onclick = () => {
-	let root = document.documentElement, 
-	t = getComputedStyle(root).getPropertyValue('--shuffle-t');
+	let root = document.documentElement,
+		t = getComputedStyle(root).getPropertyValue("--shuffle-t");
 	user = getCard(userDeck);
 	computer = getCard(computerDeck);
 	listAttrs(user, computer);
@@ -98,9 +98,9 @@ dialogRestartButton.onclick = () => {
 
 //LOGIC SECTION
 
-function restartGame(){
-	resetState(); 
-	resetPoints(); 
+function restartGame() {
+	resetState();
+	resetPoints();
 	isAttributeSelected() ? clearRadios() : null;
 	try {
 		createDeck(); //shuffle the main array again
@@ -112,23 +112,23 @@ function restartGame(){
 
 //Show remaining cards for both players
 function listCardsRemain() {
-	let deckVisual = templateItem.content.cloneNode(true);
-	let itemsUser = listDeckUser.querySelectorAll(".card-item");
-	let itemsComputer = listDeckComputer.querySelectorAll(".card-item");
-  const cardsRemainsComputer = document.querySelector("[data-remains-cards='computer']");
-  const cardsRemainsUser = document.querySelector("[data-remains-cards='user']");
-	itemsUser.forEach((item) => {
-		item.remove();
-	});
-	itemsComputer.forEach((item) => {
-		item.remove();
-	});
+	const deckVisual = templateItem.content.cloneNode(true);
+	const itemsUser = listDeckUser.querySelectorAll(".card-item");
+	const itemsComputer = listDeckComputer.querySelectorAll(".card-item");
+	const cardsRemainsComputer = document.querySelector("[data-remains-cards='computer']");
+	const cardsRemainsUser = document.querySelector("[data-remains-cards='user']");
+	clearDeckList(itemsUser);
+	clearDeckList(itemsComputer);
 	showListDecks(deckVisual, listDeckUser, userDeck.length);
 	showListDecks(deckVisual, listDeckComputer, computerDeck.length);
 	cardsRemainsComputer.textContent = `${computerDeck.length}`;
 	cardsRemainsUser.textContent = `${userDeck.length}`;
 }
-
+function clearDeckList(target) {
+	target.forEach((item) => {
+		item.remove();
+	});
+}
 function showListDecks(template, target, deckSize) {
 	for (let i = 0; i < deckSize; i++) {
 		const cards = template.querySelector(".card-item").cloneNode(true);
@@ -143,7 +143,7 @@ function isLegendary(player, cardElement) {
 		return;
 	}
 }
-//remove thr animation classes
+//remove thr legendary classes
 function turnOffLegendary() {
 	cardUser.classList.remove("legendary-card");
 	cardComputer.classList.remove("legendary-card");
@@ -173,7 +173,7 @@ function hideButton(e) {
 //function to get randomly card
 function getCard(deck) {
 	//receives a deck array
-	if (!checkDeckSize(deck)) {
+	if (!isDeckEmpty(deck)) {
 		let rNum = Math.floor(Math.random() * deck.length);
 		return deck[rNum];
 	}
@@ -182,19 +182,19 @@ function getCard(deck) {
 /*
 change the data-content-type value attribute to
 stylize the dialog based on the type (lose, win, tie). */
-function handleDialogContentType(title){
+function handleDialogContentType(title) {
 	const CONTENT_TYPES = {
 		win: "win",
 		lose: "lose",
 		tie: "tie",
 		defeat: "lose",
 		winner: "win"
-	}
+	};
 	dialogContent.dataset.contentType = CONTENT_TYPES[title];
 }
 //toggle on the visibility of the restart button in dialog if has a winner or defeated
-function handleDialogButtonState(title){
-	if(title === "defeat" || title === "winner"){
+function handleDialogButtonState(title) {
+	if (title === "defeat" || title === "winner") {
 		hideButton(dialogButtons);
 	}
 }
@@ -208,18 +208,18 @@ function showDialog(title) {
 	dlTitle.textContent = handleDialogContent(title);
 	dialogRes.show(); //show up the dialog with no-modal type
 	dialogResBackdrop.classList.toggle("backdrop--visible");
-	
+
 	//close the dialog after 1500ms if was not a winner
 	if (title !== "defeat" && title !== "winner") {
-			dialogRes.classList.add("animate-dialog");
-			dialogRes.addEventListener("animationend", () =>{
-				resetState();
-				dialogRes.classList.remove("animate-dialog");
-			});
+		dialogRes.classList.add("animate-dialog");
+		dialogRes.addEventListener("animationend", () => {
+			resetState();
+			dialogRes.classList.remove("animate-dialog");
+		});
 	}
 }
 function closeDialog() {
-	if(dialogRes instanceof HTMLDialogElement && dialogRes.open){
+	if (dialogRes instanceof HTMLDialogElement && dialogRes.open) {
 		dialogRes.close();
 		dialogResBackdrop.classList.toggle("backdrop--visible");
 	}
@@ -252,31 +252,45 @@ function listAttrs(player, machine) {
 	[radioAttack.value, radioAgility.value, radioDefense.value] = ["attack", "agility", "defense"];
 }
 
+function getWinner(objUser, objComp, attribute) {
+	const userValue = objUser[attribute];
+	const compValue = objComp[attribute];
+	if (userValue > compValue) {
+		return objUser;
+	} else if (userValue < compValue) {
+		return objComp;
+	}
+}
+function handleVictoryState(winner, user, pc) {
+	switch (winner) {
+		case user:
+			pointsUser++;
+			removeCard(pc, computerDeck);
+			isDeckEmpty(computerDeck) ? showDialog("winner") : showDialog("win");
+			break;
+		case pc:
+			pointsComputer++;
+			removeCard(user, userDeck);
+			isDeckEmpty(userDeck) ? showDialog("defeat") : showDialog("lose");
+			break;
+		default:
+			pointsUser++;
+			pointsComputer++;
+			showDialog("tie");
+			break;
+	}
+}
 //function to check if user has won or lose
 //receives two Objects
 function checkVictory(cardUserObject, cardComputerObject) {
 	//gets the value of the checked radiobutton
 	let selectedAttr = getAttributeSelected();
-	if (cardUserObject[selectedAttr] > cardComputerObject[selectedAttr]) {
-		pointsUser++;
-		removeCard(computer, computerDeck);
-		//if the computer deck is empty, player wins and finish the play, if not, player wins the round
-		checkDeckSize(computerDeck) ? showDialog("winner") : showDialog("win");
-	} else if (cardUserObject[selectedAttr] < cardComputerObject[selectedAttr]) {
-		pointsComputer++;
-		removeCard(user, userDeck);
-		//check if the userDeck is empty
-		checkDeckSize(userDeck) ? showDialog("defeat") : showDialog("lose");
-	} else {
-		pointsUser++;
-		pointsComputer++;
-		showDialog("tie");
-	}
+	const winner = getWinner(cardUserObject, cardComputerObject, selectedAttr);
+	handleVictoryState(winner, cardUserObject, cardComputerObject);
 	displayPointsUser.textContent = `${pointsUser}`;
 	displayPointsComputer.textContent = `${pointsComputer}`;
 	clearRadios();
 	listCardsRemain();
-	return;
 }
 //remove a card from the loser deck.
 function removeCard(card, deck) {
@@ -293,9 +307,9 @@ function removeCard(card, deck) {
 //check if a deck is empty.
 //return true if the deck is empty.
 //single line function by 1loc.dev
-function checkDeckSize(deckTarget) {
-	const deckIsEmpty = (arr) => Array.isArray(deckTarget) && !deckTarget.length;
-	return deckIsEmpty(deckTarget);
+function isDeckEmpty(deckTarget) {
+	const deckIsEmpty = () => Array.isArray(deckTarget) && !deckTarget.length;
+	return deckIsEmpty();
 }
 
 //clear the radio checked
@@ -326,19 +340,19 @@ function to set date-choose attribute to "yes",
 this will hide the computer attributes 
 that is not the same selected by user  
 */
-function hideNotChoosedAttribute(attr){
+function hideNotChoosedAttribute(attr) {
 	const computerAttrEquivalent = document.querySelectorAll(".attr-computer");
-	for(let item of computerAttrEquivalent){
-		if(item.dataset.attributeName === attr){
+	for (let item of computerAttrEquivalent) {
+		if (item.dataset.attributeName === attr) {
 			item.dataset.choose = "yes";
 			break;
 		}
 	}
 }
-function resetDataChooseAttribute(){
+function resetDataChooseAttribute() {
 	const computerAttrEquivalent = document.querySelectorAll(".attr-computer");
-	for(let item of computerAttrEquivalent){
-		if(item.dataset.choose === "yes"){
+	for (let item of computerAttrEquivalent) {
+		if (item.dataset.choose === "yes") {
 			item.dataset.choose = "no";
 		}
 	}
@@ -499,7 +513,6 @@ var objs = [
 		defense: 9.5
 	},
 	{
-		legend: true,
 		name: "Nemesis",
 		image: "/assets/image/nemesis.webp",
 		attack: 8,
