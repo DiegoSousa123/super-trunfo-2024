@@ -19,3 +19,8 @@ This is a card game that merges the excitement of Super Trumps with the sinister
 - **Grid Layout**: Utilizes a grid layout for organizing and displaying the cards, providing an intuitive and visually appealing interface for players.
 - **Flex Box**: Incorporates Flex Box for dynamic and responsive elements disposing, ensuring a seamless gaming experience across different devices and screen sizes.
 - **Shuffling Algorithm**: Implements the _Fisher-Yates shuffle algorithm_ to shuffle the SP-RE deck, ensuring fair and unpredictable card distributions for each game.
+
+## Screenshots
+
+![](https://i.imgur.com/qw25H7L.png)
+![](https://i.imgur.com/ju64yZM.png)
