@@ -30,6 +30,14 @@ const computerCardName = document.getElementById("computer-card-name");
 const menuStart = document.getElementById("button-start");
 const menuHelp = document.getElementById("button-help");
 const menu = document.getElementById("initial-menu");
+const cardFlipAudio = document.getElementById("audio-flip");
+const mainThemeMusic = document.getElementById("main-music");
+const btnToggleMusic = document.getElementById("btn-toggle-music");
+const musicStateText = document.getElementById("music-state-text");
+mainThemeMusic.volume = 0.5;
+mainThemeMusic.loop = true;
+mainThemeMusic.play();
+
 let pointsUser = 0; //User pontuation
 let pointsComputer = 0; //Computer pontuation
 let user, computer; //get player cards
@@ -57,6 +65,7 @@ playBtn.onclick = () => {
 		hideNotChoosedAttribute(getAttributeSelected());
 		//shows the computer card
 		rotateCard(cardComputer, viewComputer, 180);
+		playFlipSound();
 		isLegendary(computer, cardComputer);
 		disableElement(playBtn); //disable the play btn to prevent some problems...
 		let tOut = setTimeout(function () {
@@ -84,6 +93,7 @@ shuffleBtn.onclick = () => {
 	shuffleBtn.classList.add("load-shuffle");
 	let tOut = setTimeout(function () {
 		rotateCard(cardUser, viewUser, 180);
+		playFlipSound();
 		isLegendary(user, cardUser);
 		enableElement(playBtn);
 		shuffleBtn.classList.remove("load-shuffle");
@@ -95,6 +105,31 @@ dialogRestartButton.onclick = () => {
 	restartGame();
 	hideButton(dialogButtons);
 };
+
+//PLAY FLIP SOUND
+function playFlipSound(){
+	// cardFlipAudio.currentTime = 0;
+	cardFlipAudio.volume = 0.9;
+	cardFlipAudio.play();
+}
+
+//MAIN MUSIC STATE TOGGLE
+let isON = true;
+function toggleMainMusic(){
+	if(isON){
+		mainThemeMusic.pause();
+		musicStateText.textContent = "OFF";
+		isON = false;
+	}else{
+		mainThemeMusic.play();
+		musicStateText.textContent = "ON";
+		isON = true;
+	}
+}
+
+btnToggleMusic.onclick = () => {
+	toggleMainMusic();
+}
 
 //LOGIC SECTION
 

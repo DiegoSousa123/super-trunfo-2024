@@ -5,7 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,7 +20,7 @@
 			[data-game-element] {
 				display: none;
 			}
-		</style>
+			</style>
 		<link rel="stylesheet" href="./assets/css/reset.css" />
 		<link rel="stylesheet" href="./assets/css/vars.css" />
 		<link rel="stylesheet" href="./assets/css/cards.css" />
@@ -26,22 +28,26 @@
 	</head>
 	<body>
 		<main>
+			<!-- GUIDE -->
+			<dialog id="guide-dialog">
+				<div>
+					<div id="guide-visualizer"></div>
+					<button id="letsplay">Let's play</button>
+				</div>
+			</dialog>
+			<button tabindex="0" class="music__btn" id="btn-toggle-music">
+				<i class="fa-solid fa-music" id="music-on"></i>
+				<span class="music__state" id="music-state-text">ON</span>
+			</button>
 			<div class="cards__wrapper">
 				<!-- INITIAL MENU -->
 				<div class="initial__menu" id="initial-menu">
 					<h1>SP-RE 2024</h1>
-					<button class="menu__start" id="button-start">Start</button>
-					<button class="menu__help" id="button-help" title="Help button">
+					<button tabindex="1" class="menu__start" id="button-start">Start</button>
+					<button tabindex="2" class="menu__help" id="button-help" title="Help button">
 						<i class="fa-solid fa-circle-question"></i>
 					</button>
 				</div>
-				<!-- GUIDE -->
-				<dialog id="guide-dialog">
-					<div>
-						<div id="guide-visualizer"></div>
-						<button id="letsplay">Let's play</button>
-					</div>
-				</dialog>
 				<!-- COMPUTER POINTS -->
 				<div class="computer__points" data-game-element>
 					<p class="points__title">
@@ -66,12 +72,14 @@
 						<div class="front">
 							<div>
 								<img class="card__image" id="img-computer" src="./assets/image/card-placeholder.svg" loading="lazy" alt="" />
-								<span class="card__name" id="computer-card-name">Name</span>
-								<ul class="card__attr__list">
-								<li><span class="attr-computer" data-attribute-name="attack" data-choose="no">Attack: <span data-attr="computer">0</span></span></li>
-								<li><span class="attr-computer" data-attribute-name="agility" data-choose="no">Agility: <span data-attr="computer">0</span></span></li>
-								<li><span class="attr-computer" data-attribute-name="defense" data-choose="no">Defense: <span data-attr="computer">0</span></span></li>
-								</ul>
+								<div class="middle__front">
+									<span class="card__name" id="computer-card-name">Name</span>
+									<ul class="card__attr__list">
+									<li><span class="attr-computer" data-attribute-name="attack" data-choose="no">Attack: <span data-attr="computer">0</span></span></li>
+									<li><span class="attr-computer" data-attribute-name="agility" data-choose="no">Agility: <span data-attr="computer">0</span></span></li>
+									<li><span class="attr-computer" data-attribute-name="defense" data-choose="no">Defense: <span data-attr="computer">0</span></span></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="back"><span>Umbrella corp.</span></div>
@@ -83,12 +91,14 @@
 						<div class="front">
 							<div>
 								<img class="card__image" id="img-user" src="./assets/image/card-placeholder.svg" alt="" />
-								<span class="card__name" id="user-card-name">Name</span>
-								<ul class="card__attr__list">
-									<li><label for="rad1"><input id="rad1" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span> Attack: <span data-attr="user">0</span></label></li>
-									<li><label for="rad2"><input id="rad2" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Agility: <span data-attr="user">0</span></label></li>
-									<li><label for="rad3"><input id="rad3" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Defense: <span data-attr="user">0</span></label></li>
-								</ul>
+								<div class="middle__front">
+									<span class="card__name" id="user-card-name">Name</span>
+									<ul class="card__attr__list">
+										<li><label for="rad1"><input tabIndex="4" id="rad1" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span> Attack: <span data-attr="user">0</span></label></li>
+										<li><label for="rad2"><input id="rad2" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Agility: <span data-attr="user">0</span></label></li>
+										<li><label for="rad3"><input id="rad3" type="radio" name="rad-attr" value="" /><span class="custom-rad"></span>Defense: <span data-attr="user">0</span></label></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="back"><span>Umbrella corp.</span></div>
@@ -113,14 +123,14 @@
 				</div>
 				<!-- GAME ACTIONS -->
 				<div class="game__actions" data-game-element>
-					<button class="button__action --shuffle" id="btn-shuffle">
+					<button tabindex="3" class="button__action --shuffle" id="btn-shuffle">
 						<span class="btn-icon fa-solid fa-shuffle"></span><span>Shuffle</span>
 					</button>
-					<button class="button__action --restart" id="btn-restart">
+					<button tabindex="6" class="button__action --restart" id="btn-restart">
 						<span class="fa-solid fa-rotate-right"></span>
 						<span>Restart</span>
 					</button>
-					<button class="button__action --play" id="btn-play" disabled>
+					<button tabindex="5" class="button__action --play" id="btn-play" disabled>
 						<span class="btn-icon fa-solid fa-gamepad"></span><span>Play</span>
 					</button>
 				</div>
@@ -145,12 +155,12 @@
 					src="./assets/image/sp-re-logo-svg.svg"
 					id="sp-logo"
 					alt="Super Trumps Resident Evil logo" />
-				<a href="https://github.com/DiegoSousa123/super-trunfo-2024">Go to repository</a>
+				<a tabindex="7" href="https://github.com/DiegoSousa123/super-trunfo-2024">Go to repository</a>
 			</div>
 			<div class="dev">
-				<p>created by diêgo sousa</p>
+				<p>created by diego sousa</p>
 				<div class="contact">
-					<a href="https://github.com/DiegoSousa123"><i class="fa-brands fa-github"></i><em>Diêgo Sousa on github</em></a>
+					<a tabindex="8" href="https://github.com/DiegoSousa123"><i class="fa-brands fa-github"></i><em>Diêgo Sousa on github</em></a>
 				</div>
 			</div>
 			<div>
@@ -166,6 +176,9 @@
 				<div class="item"></div>
 			</li>
 		</template>
+		<audio id="audio-flip" src="./assets/sounds/flipcard.wav" preload="metadata"></audio>
+		<audio id="main-music" src="./assets/sounds/main_theme.mp3" preload="metadata"></audio>
+
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" async></script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"
@@ -173,7 +186,7 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 			async></script>
-		<script type="text/javascript" src="./assets/js/guide.min.js" async></script>
-		<script src="./assets/js/index.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="./assets/js/guide.js" async></script>
+		<script src="./assets/js/index.js" type="text/javascript"></script>
 	</body>
 </html>

@@ -22,12 +22,18 @@
   	--clr-heading: #C2B477;
   	--clr-load-shuffle: crimson;
   	--clr-text: #f1f1f1;
-  	--clr-legendary: #f8dc46;
+  	/* --clr-legendary: #D4AF37; */
 /*	--clr-legendary: #B8860B; */
+	--clr-legendary: #ffd60a;
   	--clr-win: lawngreen;
   	--clr-lose: crimson;
   	--clr-tie: lightsteelblue;
   	--clr-attr-list: rgba(5, 5, 5, 0.8);
+
+	--st-25-main-clr: #10100F;
+	--st-25-secondary-clr: #D5D5CD;
+	--st-25-accent-clr: #F6F6F6;
+
 }
 @media (prefers-color-scheme: dark){
 	:root{
@@ -36,6 +42,6 @@
 		--clr-button-text: #f1f1f1;
 		--clr-attr-item: #e0e0e0;
 		--clr-accent: #6F6B39;
-		--clr-legendary: #847b1a;
+		/* --clr-legendary: #DAA520; */
 	}
 }
