@@ -34,9 +34,7 @@ const cardFlipAudio = document.getElementById("audio-flip");
 const mainThemeMusic = document.getElementById("main-music");
 const btnToggleMusic = document.getElementById("btn-toggle-music");
 const musicStateText = document.getElementById("music-state-text");
-mainThemeMusic.volume = 0.5;
-mainThemeMusic.loop = true;
-mainThemeMusic.play();
+
 
 let pointsUser = 0; //User pontuation
 let pointsComputer = 0; //Computer pontuation
@@ -52,6 +50,9 @@ if (!menu.getAttribute("data-game-element")) {
 	menuStart.addEventListener("click", () => {
 		document.querySelectorAll("[data-game-element]").forEach((item) => item.removeAttribute("data-game-element"));
 		menu.setAttribute("data-game-element", "");
+		mainThemeMusic.volume = 0.45;
+		mainThemeMusic.muted = false;
+		mainThemeMusic.play();
 	});
 }
 
@@ -426,147 +427,214 @@ function createDeck() {
 	computerDeck = shuffled.slice(s, shuffled.length);
 }
 var objs = [
+    {
+        name: "Jill Valentine",
+        image: "/assets/image/jill.webp",
+        // Arquétipo: Equilibrada/Tática.
+        // Ganha de Tanques na agilidade, perde para especialistas em força bruta.
+        attack: 8.5,
+        agility: 8.5,
+        defense: 8.0
+    },
+    {
+        name: "Ada Wong",
+        image: "/assets/image/ada-wong.webp",
+        // Arquétipo: Velocista.
+        // Alta esquiva, defesa mais frágil.
+        attack: 7.5,
+        agility: 9.5,
+        defense: 6.0
+    },
+    {
+        name: "Claire Redfield",
+        image: "/assets/image/claire_2.webp",
+        // Arquétipo: Sobrevivente.
+        // Defesa sólida e agilidade decente.
+        attack: 7.0,
+        agility: 8.0,
+        defense: 8.5
+    },
+    {
+        name: "Piers Nivans",
+        image: "/assets/image/piers.webp",
+        // Arquétipo: Sniper/Suporte Ofensivo.
+        // Ataque alto, mas defesa sacrificada pelo vírus C no final.
+        attack: 9.0,
+        agility: 7.0,
+        defense: 6.5
+    },
+    {
+        name: "Rebecca Chambers",
+        image: "/assets/image/rebecca_chambers.webp",
+        // Arquétipo: Medic/Support.
+        // Atributos baixos em combate, mas surpreende na agilidade contra inimigos pesados.
+        attack: 5.5,
+        agility: 8.5,
+        defense: 6.5
+    },
+    {
+        legend: true,
+        name: "Chris Redfield",
+        image: "/assets/image/chris.webp",
+        // Arquétipo: Legend/Brute.
+        // O máximo da força humana. Lento, mas bate e apanha muito.
+        attack: 10.0,
+        agility: 6.0,
+        defense: 9.0
+    },
+    {
+        name: "Ethan Winters",
+        image: "/assets/image/ethan.webp",
+        // Arquétipo: Tanque de Regeneração.
+        // Baixo treino militar (ataque/agilidade menores), mas defesa altíssima (mofo).
+        attack: 6.5,
+        agility: 6.0,
+        defense: 9.5
+    },
+    {
+        name: "Vector",
+        image: "/assets/image/vector.webp",
+        // Arquétipo: Stealth.
+        // Similar a Ada, focado em agilidade e ataque surpresa.
+        attack: 8.0,
+        agility: 9.0,
+        defense: 6.0
+    },
+    {
+        name: "Hunk",
+        image: "/assets/image/hunk.webp",
+        // Arquétipo: Profissional.
+        // Estatísticas muito consistentes. Difícil ter um atributo ruim.
+        attack: 8.5,
+        agility: 7.5,
+        defense: 8.5
+    },
+    {
+        name: "Helena Harper",
+        image: "/assets/image/helena.webp",
+        // Arquétipo: Agente.
+        // Balanceada, levemente inferior a Leon/Jill.
+        attack: 7.5,
+        agility: 7.0,
+        defense: 7.5
+    },
+    {
+        name: "Leon S. Kennedy",
+        image: "/assets/image/leon.webp",
+        // Arquétipo: Herói de Ação.
+        // Excelente agilidade e ataque, defesa média.
+        attack: 8.5,
+        agility: 9.0,
+        defense: 7.5
+    },
+    {
+        name: "Luiz Serra",
+        image: "/assets/image/luiz.webp",
+        // Arquétipo: Carta "Azarão".
+        // Estatísticas baixas, serve para "queimar" a vez ou tentar sorte na defesa.
+        attack: 5.0,
+        agility: 6.0,
+        defense: 7.0
+    },
+    {
+        name: "Carlos Oliveira",
+        image: "/assets/image/carlos.webp",
+        // Arquétipo: Mercenário Pesado.
+        // Bom ataque, lento.
+        attack: 8.0,
+        agility: 6.5,
+        defense: 8.0
+    },
+    {
+        name: "Barry Burton",
+        image: "/assets/image/barry.webp",
+        // Arquétipo: Canhão de Vidro (Magnum).
+        // Ataque massivo, mas idade pesa na agilidade.
+        attack: 9.5,
+        agility: 5.0,
+        defense: 8.0
+    },
+    {
+        name: "Bitorez",
+        image: "/assets/image/bitorez.webp",
+        // Arquétipo: Boss Inicial.
+        // Forte e resistente, mas muito lento.
+        attack: 9.0,
+        agility: 5.0,
+        defense: 9.0
+    },
+    {
+        legend: true,
+        name: "Albert Wesker",
+        image: "/assets/image/wesker.webp",
+        // Arquétipo: Legend/God Tier.
+        // Agilidade máxima. Só perde em Defesa para Tanques puros (Nemesis/Ethan).
+        attack: 9.5,
+        agility: 10.0,
+        defense: 8.0
+    },
+    {
+        name: "Krauser",
+        image: "/assets/image/krauser.webp",
+        // Arquétipo: Duelista.
+        // Combate direto forte, defesa alta devido a mutação.
+        attack: 9.0,
+        agility: 8.0,
+        defense: 8.5
+    },
+    {
+        name: "Nemesis",
+        image: "/assets/image/nemesis.webp",
+        // Arquétipo: Juggernaut.
+        // A maior defesa do jogo. Agilidade péssima.
+        attack: 9.0,
+        agility: 5.5,
+        defense: 10.0
+    },
+    {
+        name: "Sherry Birkin",
+        image: "/assets/image/sherry.webp",
+        // Arquétipo: Regeneradora Ágil.
+        // Baixo ataque, mas excelente sobrevivência e fuga.
+        attack: 6.0,
+        agility: 8.0,
+        defense: 9.0
+    },
+    {
+        name: "Jake Muller",
+        image: "/assets/image/jake.webp",
+        // Arquétipo: Lutador.
+        // Atributos físicos altos herdados de Wesker, mas menos refinado.
+        attack: 8.5,
+        agility: 8.5,
+        defense: 7.5
+    },
 	{
-		name: "Jill Valentine",
-		image: "/assets/image/jill.webp",
-		attack: 9,
-		agility: 7.5,
-		defense: 8.5
-	},
-	{
-		name: "Ada Wong",
-		image: "/assets/image/ada-wong.webp",
-		attack: 8,
-		agility: 9,
-		defense: 7
-	},
-	{
-		name: "Claire Redfield",
-		image: "/assets/image/claire_2.webp",
-		attack: 7,
-		agility: 8,
-		defense: 8
-	},
-	{
-		name: "Piers Nivans",
-		image: "/assets/image/piers.webp",
-		attack: 7,
-		agility: 5,
-		defense: 9
-	},
-	{
-		name: "Rebecca Chambers",
-		image: "/assets/image/rebecca_chambers.webp",
-		attack: 6,
-		agility: 8,
-		defense: 7
-	},
-	{
-		legend: true,
-		name: "Chris Redfield",
-		image: "/assets/image/chris.webp",
+		name: "Ultimate Abyss",
+		image: "/assets/image/Ultimate_Abyss.webp",
 		attack: 10,
-		agility: 5,
-		defense: 8.5
+		agility: 8,
+		defense: 7.5
 	},
 	{
-		name: "Ethan Winters",
-		image: "/assets/image/ethan.webp",
-		attack: 6,
-		agility: 6,
-		defense: 9
-	},
-	{
-		name: "Vector",
-		image: "/assets/image/vector.webp",
+		name: "Eveline",
+		image: "/assets/image/eveline.webp",
 		attack: 7.5,
-		agility: 7,
-		defense: 5
-	},
-	{
-		name: "Hunk",
-		image: "/assets/image/hunk.webp",
-		attack: 8,
-		agility: 7.5,
-		defense: 8
-	},
-	{
-		name: "Helena Harper",
-		image: "/assets/image/helena.webp",
-		attack: 7,
-		agility: 7,
-		defense: 8.5
-	},
-	{
-		name: "Leon S. Kennedy",
-		image: "/assets/image/leon.webp",
-		attack: 8,
 		agility: 9,
+		defense: 8
+	},{
+		name: "Grace Ashcroft",
+		image: "/assets/image/grace_ashcroft.webp",
+		attack: 8.5,
+		agility: 8,
 		defense: 7
 	},
 	{
-		name: "Luiz Serra",
-		image: "/assets/image/luiz.webp",
-		attack: 5.5,
-		agility: 6.5,
-		defense: 8
-	},
-	{
-		name: "Carlos Oliveira",
-		image: "/assets/image/carlos.webp",
-		attack: 7,
-		agility: 6,
-		defense: 9
-	},
-	{
-		name: "Barry Burton",
-		image: "/assets/image/barry.webp",
-		attack: 8,
-		agility: 5.5,
-		defense: 9
-	},
-	{
-		name: "Bitorez",
-		image: "/assets/image/bitorez.webp",
-		attack: 9,
-		agility: 5.5,
-		defense: 9
-	},
-	{
-		legend: true,
-		name: "Albert Wesker",
-		image: "/assets/image/wesker.webp",
-		attack: 8.5,
-		agility: 10,
-		defense: 7.5
-	},
-	{
-		name: "Krauser",
-		image: "/assets/image/krauser.webp",
-		attack: 6.5,
-		agility: 8,
-		defense: 9.5
-	},
-	{
-		name: "Nemesis",
-		image: "/assets/image/nemesis.webp",
-		attack: 8,
-		agility: 5,
-		defense: 9.5
-	},
-	{
-		name: "Sherry Birkin",
-		image: "/assets/image/sherry.webp",
-		attack: 6.5,
-		agility: 8,
-		defense: 7.5
-	},
-	{
-		name: "Jake Miller",
-		image: "/assets/image/jake.webp",
+		name: "Lady Hunk",
+		image: "/assets/image/Lady_hunk.webp",
 		attack: 7,
 		agility: 8,
-		defense: 8.5
+		defense: 7.5
 	}
 ];
 
