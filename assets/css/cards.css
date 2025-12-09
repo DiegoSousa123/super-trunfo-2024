@@ -316,10 +316,13 @@ input[type="radio"]:checked + .custom-rad::after {
   .card__attr__list {
     gap: 0.3rem;
   }
+  .card__attr__list{
+    padding: 0.5rem 0.5rem;
+  }
   .card__attr__list label,
   .card__attr__list span.attr-computer {
     padding: 0;
-    font-size: 0.8rem;
+    font-size: 0.90rem;
   }
 }
 @media (min-width: 375px) and (max-height: 620px) {
