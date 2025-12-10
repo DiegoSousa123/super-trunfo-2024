@@ -598,7 +598,7 @@ var objs = [
         // Baixo ataque, mas excelente sobrevivência e fuga.
         attack: 6.0,
         agility: 8.0,
-        defense: 9.0
+        defense: 7.5
     },
     {
         name: "Jake Muller",

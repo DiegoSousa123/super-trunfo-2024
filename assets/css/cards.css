@@ -82,8 +82,8 @@
   z-index: -1;
 }
 .back {
+  background-image: url("/assets/image/umbrella-svg-logo.svg");
   background-color: var(--st-25-main-clr);
-  background-image: url("/assets/image/umbrella-mobile-logo.webp");
   background-repeat: no-repeat;
   background-size: 40%;
   background-position: center 30%;
@@ -338,7 +338,6 @@ input[type="radio"]:checked + .custom-rad::after {
   }
   .back {
     background-size: 50%;
-    background-image: url("/assets/image/umbrella-svg-logo.svg");
   }
   .back span {
     margin-top: 10rem;

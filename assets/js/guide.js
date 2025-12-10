@@ -10,7 +10,7 @@ const MARK_GUIDE = `
 
 2. **Getting Cards:**
    - Click "Shuffle" for a random card each.
-   - Start with 10 cards.
+   - Start with full deck.
 
 3. **Playing a Round:**
    - Choose your attribute clicking on it.
@@ -22,7 +22,7 @@ const MARK_GUIDE = `
    - Play until one has no cards left.
 
 5. **Enjoy and Replay:**
-   - Have fun with SP-RE 2024!
+   - Have fun with SP-RE 2026!
 `;
 function showHelp(){
 	guideVisualizer.innerHTML = DOMPurify.sanitize(marked.parse(MARK_GUIDE));
