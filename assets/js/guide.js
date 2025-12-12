@@ -26,7 +26,7 @@ const MARK_GUIDE = `
 `;
 function showHelp(){
 	guideVisualizer.innerHTML = DOMPurify.sanitize(marked.parse(MARK_GUIDE));
-	guideDialog.show();
+	guideDialog.showModal();
 }
 letsPlay.addEventListener("click", () => {
 	if (guideDialog instanceof HTMLDialogElement && guideDialog.open) {

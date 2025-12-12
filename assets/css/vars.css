@@ -22,8 +22,6 @@
   	--clr-heading: #C2B477;
   	--clr-load-shuffle: crimson;
   	--clr-text: #f1f1f1;
-  	/* --clr-legendary: #D4AF37; */
-/*	--clr-legendary: #B8860B; */
 	--clr-legendary: #ffd60a;
 
 	--legendary-gradient: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
@@ -46,6 +44,5 @@
 		--clr-button-text: #f1f1f1;
 		--clr-attr-item: #e0e0e0;
 		--clr-accent: #6F6B39;
-		/* --clr-legendary: #DAA520; */
 	}
 }

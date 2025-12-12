@@ -22,16 +22,17 @@ body {
 	grid-template-columns: 1fr;
 	place-content: center;
 	place-items: center;
-	gap: 5rem;
+	gap: 3.50rem;
 	position: absolute;
 	inset: 0;
 	background-image: url('/assets/image/st-25-bg-image.webp');
 	background-size: cover;
 }
 .initial__menu h1{
-	background-color: var(--st-25-secondary-clr);
+	background-image: linear-gradient(to right, transparent 0%, rgba(9, 9, 9, 0.8) 20%,
+	 rgba(9, 9, 9, 0.9) 40%, rgba(9, 9, 9, 0.9) 60%, rgba(9, 9, 9, 0.8) 80%, transparent 100%);
 	padding-inline: 2.25rem;
-	color: var(--st-25-main-clr);
+	color: var(--st-25-accent-clr);
 	font-weight: 900;
 }
 .menu__start{
@@ -92,6 +93,28 @@ body {
 .music__state{
 	font-weight: 700;
 }
+
+.warning{
+	display: flex;
+	flex-direction: column;
+	margin-inline: 2.25rem;
+	justify-content: center;
+	background-image: linear-gradient(to right, transparent, var(--st-25-main-clr), transparent);
+	padding-inline: 2rem;
+	padding-block: 0.75rem;
+	& .warning__text{
+		font-size: .8rem;
+		text-align: center;
+	}
+}
+.warning .warning__text:not(:first-of-type){
+	margin-top: 0.25rem;
+	padding-top: 0.25rem;
+	border-top: 1px solid var(--st-25-accent-clr);
+	border-image: linear-gradient(to right, transparent, var(--st-25-accent-clr), transparent) 1;
+}
+
+
 /*GUIDE DIALOG STYLE*/
 
 @keyframes showGuide{
@@ -185,8 +208,8 @@ body {
 		color: var(--st-25-main-clr);
 	}
 }
-::backdrop {
-	background-color: rgba(10, 10, 10, 0.8);
+#guide-dialog::backdrop {
+	background-color: rgba(10, 10, 10, 0.893);
 }
 /*END OF GUIDE DIALOG STYLE*/
 
@@ -202,6 +225,7 @@ body {
 	border-radius: var(--border-rd);
 	overflow: hidden;
 	grid-template-columns: 1fr;
+	user-select: none;
 }
 
 /*points display styles*/
@@ -446,6 +470,9 @@ footer {
 	object-fit: cover;
 	aspect-ratio: 4 / 2;
 }
+footer a:hover{
+	color: crimson;
+}
 .dev {
 	display: flex;
 	flex-direction: column;
@@ -474,6 +501,9 @@ footer {
 }
 .contact i {
 	font-size: 1.8em;
+	&:hover{
+		color: crimson;
+	}
 }
 .disclaimer {
 	text-transform: capitalize;
