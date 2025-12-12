@@ -38,13 +38,11 @@ body {
 .menu__start{
 	font-size: 1.3rem;
 	padding: .5rem 2rem;
-	background-image: url('/assets/image/st-re2025-btn-bg.png');
+	background-image: linear-gradient(to right, transparent 0%, rgba(9, 9, 9, 0.8) 20%,
+	 rgba(9, 9, 9, 0.9) 40%, rgba(9, 9, 9, 0.9) 60%, rgba(9, 9, 9, 0.8) 80%, transparent 100%);
 	background-size: cover;
-	color: var(--st-25-main-clr);
+	color: var(--st-25-accent-clr);
 	font-weight: var(--ft-wg-700);
-	&:hover{
-		color: var(--st-25-main-clr)
-	}
 }
 .menu__help{
 	position: absolute;

@@ -34,7 +34,7 @@ const cardFlipAudio = document.getElementById("audio-flip");
 const mainThemeMusic = document.getElementById("main-music");
 const btnToggleMusic = document.getElementById("btn-toggle-music");
 const musicStateText = document.getElementById("music-state-text");
-
+const attrHoverAudio = document.getElementById("audio-hover");
 
 let pointsUser = 0; //User pontuation
 let pointsComputer = 0; //Computer pontuation
@@ -55,6 +55,13 @@ if (!menu.getAttribute("data-game-element")) {
 		mainThemeMusic.play();
 	});
 }
+
+iptRadios.forEach((radio) => {
+	radio.addEventListener("click", () => {
+		attrHoverAudio.currentTime = 0;
+		attrHoverAudio.volume = 0.2;
+		attrHoverAudio.play();
+	})});
 
 //BUTTONS SECTIONS
 hideButton(dialogButtons);
